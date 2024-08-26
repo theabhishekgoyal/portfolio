@@ -1493,6 +1493,7 @@ footer .quick-link a:hover {
 
 .skills-content .skill-icon img {
     transition: transform 0.3s ease;
+    
 }
 
 .skills-content .skill-icon img:hover {
