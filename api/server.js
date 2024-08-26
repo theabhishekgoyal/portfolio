@@ -1,14 +1,15 @@
-// server.js
+// api/server.js
 
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '../public')));
 
 mongoose.connect(
   process.env.MONGODB_URI,
@@ -28,7 +29,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.post("/", async function (req, res) {
@@ -40,13 +41,15 @@ app.post("/", async function (req, res) {
       message: req.body.message,
     });
 
-    const result = await newuser.save();
-    console.log("User saved successfully:", result);
+    await newuser.save();
+    console.log("User saved successfully.");
+    
+    // After saving, redirect to the root to load index.html again
+    res.redirect('/');
   } catch (err) {
     console.error("Error saving user:", err);
+    res.status(500).send("An error occurred.");
   }
-
-  res.sendFile(__dirname + "/public/index.html");
 });
 
 const port = process.env.PORT || 4000;
@@ -54,4 +57,3 @@ const port = process.env.PORT || 4000;
 app.listen(port, function () {
   console.log(`Server started at Port ${port}`);
 });
-
