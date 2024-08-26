@@ -8,19 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ABHISHEK0308-carber/portifolio.git"
+    "url": "git+https://github.com/theabhishekgoyal/portfolio.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ABHISHEK0308-carber/portifolio/issues"
+    "url": "https://github.com/theabhishekgoyal/portfolio/issues"
   },
-  "homepage": "https://github.com/ABHISHEK0308-carber/portifolio#readme",
+  "homepage": "https://github.com/theabhishekgoyal/portfolio#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "readme-md-generator": "^1.0.0"
   }
 }
